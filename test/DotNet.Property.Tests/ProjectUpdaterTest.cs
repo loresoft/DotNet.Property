@@ -23,6 +23,20 @@ namespace DotNet.Property.Tests
             args["Copyright"].Should().Be("Copyright 2018 LoreSoft");
         }
 
+        [Fact]
+        public void ParseArgumentsEquals()
+        {
+            var args = ProjectUpdater.ParseArguments(new[]
+            {
+                "Version=1.0.0.3",
+                "Copyright=Copyright 2018 LoreSoft"
+            }, 0);
+
+            args.Should().NotBeNull();
+            args.Count.Should().Be(2);
+            args["Version"].Should().Be("1.0.0.3");
+            args["Copyright"].Should().Be("Copyright 2018 LoreSoft");
+        }
 
         [Fact]
         public void UpdateProject()
@@ -44,7 +58,19 @@ namespace DotNet.Property.Tests
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
+
             updater.UpdateProject(document);
+
+            var result = document.ToString();
+
+            var expected = @"<Project>
+  <PropertyGroup>
+    <Version>2.0.0.0</Version>
+    <Copyright>Copyright 2018 LoreSoft</Copyright>
+  </PropertyGroup>
+</Project>";
+
+            result.Should().Be(expected);
         }
     }
 }
