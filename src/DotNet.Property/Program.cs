@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.FileSystemGlobbing;
-using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 
 namespace DotNet.Property
 {
@@ -17,8 +14,16 @@ namespace DotNet.Property
                 return 1;
             }
 
-            var updater = new ProjectUpdater();
-            updater.Update(args);
+            try
+            {
+                var updater = new ProjectUpdater();
+                updater.Update(args, Environment.CurrentDirectory);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex.ToString());
+                return 1;
+            }
 
             return 0;
         }

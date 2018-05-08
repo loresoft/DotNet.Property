@@ -5,7 +5,15 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Property", "src\DotNet.Property\DotNet.Property.csproj", "{4BD565C9-B0BA-4558-A40D-67CE8975CFFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Property.Tests", "test\DotNet.Property.Tests\DotNet.Property.Tests.csproj", "{F3F32D10-ED34-4430-9E02-2C499BDB17CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet.Property.Tests", "test\DotNet.Property.Tests\DotNet.Property.Tests.csproj", "{F3F32D10-ED34-4430-9E02-2C499BDB17CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F6E81BF8-B782-4E0F-98D5-E811BAC65682}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		build\common.props = build\common.props
+		build\sourcelink.props = build\sourcelink.props
+		build\version.props = build\version.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
