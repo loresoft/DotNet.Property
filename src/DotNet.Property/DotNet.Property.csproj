@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>dotnet-property</AssemblyName>
+    <RootNamespace>DotNet.Property</RootNamespace>
+    <Version>1.0.0.0</Version>
+    <PackageId>dotnet-property</PackageId>
+    <Copyright>Copyright © 2018 LoreSoft</Copyright>
+    <Company>LoreSoft</Company>
+    <Product>dotnet-property</Product>
+    <Title>dotnet-property</Title>
+    <Description>.NET Core command-line (CLI) tool to update project properties and version numbers on build.</Description>
+    <Authors>LoreSoft</Authors>
+    <PackageProjectUrl>https://github.com/loresoft/DotNet.Property</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/loresoft/DotNet.Property/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/loresoft/DotNet.Property</RepositoryUrl>
+    <PackageTags>dotnet; cli; build; version</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
