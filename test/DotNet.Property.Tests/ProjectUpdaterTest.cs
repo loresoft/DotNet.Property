@@ -47,12 +47,7 @@ namespace DotNet.Property.Tests
                 { "Copyright", "Copyright 2018 LoreSoft" }
             };
 
-            var xml = @"<Project>
-  <PropertyGroup>
-    <Version>1.0.0.0</Version>
-  </PropertyGroup>
-</Project>";
-
+            var xml = "<Project>\r\n  <PropertyGroup>\r\n    <Version>1.0.0.0</Version>\r\n  </PropertyGroup>\r\n</Project>";
             var document = XDocument.Parse(xml);
 
 
@@ -63,13 +58,7 @@ namespace DotNet.Property.Tests
 
             var result = document.ToString();
 
-            var expected = @"<Project>
-  <PropertyGroup>
-    <Version>2.0.0.0</Version>
-    <Copyright>Copyright 2018 LoreSoft</Copyright>
-  </PropertyGroup>
-</Project>";
-
+            var expected = "<Project>\r\n  <PropertyGroup>\r\n    <Version>2.0.0.0</Version>\r\n    <Copyright>Copyright 2018 LoreSoft</Copyright>\r\n  </PropertyGroup>\r\n</Project>";
             result.Should().Be(expected);
         }
     }
