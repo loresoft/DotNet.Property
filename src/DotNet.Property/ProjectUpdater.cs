@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
@@ -88,9 +90,23 @@ namespace DotNet.Property
                 throw new ArgumentException($"File not found: {filePath}", nameof(filePath));
 
             WriteLog($"Updating Project: {filePath}");
+
             var document = XDocument.Load(filePath);
 
             UpdateProject(document);
+
+            // save document
+            var settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = true
+            };
+
+            using (var stream = File.OpenWrite(filePath))
+            using (var writer = XmlWriter.Create(stream, settings))
+            {
+                document.Save(writer);
+            }
         }
 
         /// <summary>
@@ -98,6 +114,7 @@ namespace DotNet.Property
         /// </summary>
         /// <param name="document">The project document.</param>
         /// <exception cref="ArgumentNullException"><paramref name="document"/> is <see langword="null"/></exception>
+        /// <exception cref="InvalidOperationException">Missing root Project node.</exception>
         public void UpdateProject(XDocument document)
         {
             if (document == null)
@@ -106,13 +123,33 @@ namespace DotNet.Property
             if (Properties == null || Properties.Count == 0)
                 return;
 
+            var projectElement = document.Element("Project");
+            if (projectElement == null)
+                throw new InvalidOperationException("Could not find root Project node. Make sure file has a root Project node without a namespace.");
+
             foreach (var p in Properties)
             {
                 WriteLog($"  Set Property '{p.Key}':'{p.Value}'");
+                
+                // find last group with element and no condition
+                var projectGroup = projectElement
+                    .Elements("PropertyGroup")
+                    .LastOrDefault(e => 
+                        e.Elements(p.Key).Any() && 
+                        (e.HasAttributes == false || e.Attributes().All(a => a.Name != "Condition"))
+                    );
 
-                document
-                    .GetOrCreateElement("Project")
-                    .GetOrCreateElement("PropertyGroup")
+                // use last group without condition
+                if (projectGroup == null)
+                    projectGroup = projectElement
+                        .Elements("PropertyGroup")
+                        .LastOrDefault(e => e.HasAttributes == false || e.Attributes().All(a => a.Name != "Condition"));
+
+                // create new if not found
+                if (projectGroup == null)
+                    projectGroup = new XElement("ProjectGroup");
+
+                projectGroup
                     .GetOrCreateElement(p.Key)
                     .SetValue(p.Value);
             }

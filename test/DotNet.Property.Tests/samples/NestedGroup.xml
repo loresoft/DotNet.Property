@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Description>Test</Description>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Product>dotnet-property</Product>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <Description>Test (.NET Core 2.0) </Description>
+  </PropertyGroup>
+</Project>

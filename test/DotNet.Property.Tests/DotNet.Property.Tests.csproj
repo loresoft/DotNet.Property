@@ -17,4 +17,13 @@
     <ProjectReference Include="..\..\src\DotNet.Property\DotNet.Property.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="samples\NestedGroup.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="samples\SampleLibrary.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
