@@ -6,7 +6,7 @@
 
 Install the global tool
 
-    dotnet install tool -g dotnet-property
+    dotnet tool install -g dotnet-property
 
 Update project property
 
