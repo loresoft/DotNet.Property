@@ -72,6 +72,31 @@ namespace DotNet.Property.Tests
         }
 
         [Fact]
+        public void UpdateProjectMissingGroup()
+        {
+            var properties = new Dictionary<string, string>
+            {
+                { "Version", "2.0.0.0" },
+                { "Copyright", "Copyright 2018 LoreSoft" }
+            };
+
+            var xml = "<Project>\r\n</Project>";
+            var document = XDocument.Parse(xml);
+
+
+            var updater = new ProjectUpdater();
+            updater.Properties = properties;
+            updater.Logger = Output.WriteLine;
+
+            updater.UpdateProject(document);
+
+            var result = document.ToString();
+
+            var expected = "<Project>\r\n  <PropertyGroup>\r\n    <Version>2.0.0.0</Version>\r\n    <Copyright>Copyright 2018 LoreSoft</Copyright>\r\n  </PropertyGroup>\r\n</Project>";
+            result.Should().Be(expected);
+        }
+
+        [Fact]
         public void UpdateProjectComplex()
         {
             var properties = new Dictionary<string, string>

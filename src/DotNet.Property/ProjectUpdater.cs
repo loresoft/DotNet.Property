@@ -147,7 +147,8 @@ namespace DotNet.Property
 
                 // create new if not found
                 if (projectGroup == null)
-                    projectGroup = new XElement("ProjectGroup");
+                    projectGroup = projectElement
+                        .GetOrCreateElement("PropertyGroup");
 
                 projectGroup
                     .GetOrCreateElement(p.Key)
