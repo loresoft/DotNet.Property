@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using FluentAssertions;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace DotNet.Property.Tests
 {
     public class ProjectUpdaterTest
     {
+        public ProjectUpdaterTest(ITestOutputHelper output)
+        {
+            Output = output;
+        }
+
+        public ITestOutputHelper Output { get; }
+
         [Fact]
         public void ParseArguments()
         {
@@ -53,6 +61,7 @@ namespace DotNet.Property.Tests
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
+            updater.Logger = Output.WriteLine;
 
             updater.UpdateProject(document);
 
@@ -77,6 +86,7 @@ namespace DotNet.Property.Tests
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
+            updater.Logger = Output.WriteLine;
 
             updater.UpdateProject(document);
 
@@ -101,6 +111,7 @@ namespace DotNet.Property.Tests
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
+            updater.Logger = Output.WriteLine;
 
             updater.UpdateProject(projectPath);
         }
@@ -120,6 +131,7 @@ namespace DotNet.Property.Tests
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
+            updater.Logger = Output.WriteLine;
 
             updater.UpdateProject(projectPath);
         }
