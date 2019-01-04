@@ -102,7 +102,7 @@ namespace DotNet.Property
                 Indent = true
             };
 
-            using (var stream = File.OpenWrite(filePath))
+            using (var stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
             using (var writer = XmlWriter.Create(stream, settings))
             {
                 document.Save(writer);
