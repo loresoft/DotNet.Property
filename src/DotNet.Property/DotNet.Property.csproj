@@ -12,7 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="SourceLink.Embed.AllSourceFiles" Version="2.8.3" />
   </ItemGroup>
 
 </Project>

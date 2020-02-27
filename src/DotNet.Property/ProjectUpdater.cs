@@ -91,7 +91,11 @@ namespace DotNet.Property
 
             WriteLog($"Updating Project: {filePath}");
 
-            var document = XDocument.Load(filePath);
+            XDocument document;
+            using (var readStream = File.OpenRead(filePath))
+            {
+                document = XDocument.Load(readStream);
+            }
 
             UpdateProject(document);
 
