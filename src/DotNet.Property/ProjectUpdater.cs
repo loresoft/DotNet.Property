@@ -70,7 +70,13 @@ namespace DotNet.Property
             foreach (var fileMatch in matchingResult.Files)
             {
                 var filePath = Path.GetFullPath(fileMatch.Path);
-                UpdateProject(filePath);
+                try{
+                    UpdateProject(filePath);
+                }
+                catch(Exception ex){ // intercept error and try to process next file
+                    Console.WriteLine($"error occured processing {filePath} : {ex.Message}");
+                }
+                    
             }
         }
 
