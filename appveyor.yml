@@ -25,7 +25,7 @@ test_script:
   - dotnet test test\DotNet.Property.Tests\DotNet.Property.Tests.csproj --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
 artifacts:
-- path: artifacts\*.nupkg
+- path: artifacts\*.*nupkg
   name: Packages
 
 deploy:

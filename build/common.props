@@ -12,14 +12,30 @@
     <Product>dotnet-property</Product>
     <Title>dotnet-property</Title>
     <Description>.NET Core command-line (CLI) tool to update project properties and version numbers on build.</Description>
-    <Copyright>Copyright © 2018 LoreSoft</Copyright>
+    <Copyright>Copyright © 2021 LoreSoft</Copyright>
     <Authors>LoreSoft</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>dotnet; cli; build; version; properties</PackageTags>
     <PackageOutputPath>$(SolutionDir)artifacts</PackageOutputPath>
     <PackageProjectUrl>https://github.com/loresoft/DotNet.Property</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/loresoft/DotNet.Property/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>logo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/loresoft/DotNet.Property</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include=".\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".\..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
 </Project>
