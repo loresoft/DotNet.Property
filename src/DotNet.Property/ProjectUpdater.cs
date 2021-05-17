@@ -70,13 +70,14 @@ namespace DotNet.Property
             foreach (var fileMatch in matchingResult.Files)
             {
                 var filePath = Path.GetFullPath(fileMatch.Path);
-                try{
+                try
+                {
                     UpdateProject(filePath);
                 }
-                catch(Exception ex){ // intercept error and try to process next file
-                    Console.WriteLine($"error occured processing {filePath} : {ex.Message}");
+                catch (Exception ex)
+                {
+                    Console.Error.WriteLine($"Error occured processing {filePath} : {ex.Message}");
                 }
-                    
             }
         }
 
@@ -140,12 +141,12 @@ namespace DotNet.Property
             foreach (var p in Properties)
             {
                 WriteLog($"  Set Property '{p.Key}':'{p.Value}'");
-                
+
                 // find last group with element and no condition
                 var projectGroup = projectElement
                     .Elements("PropertyGroup")
-                    .LastOrDefault(e => 
-                        e.Elements(p.Key).Any() && 
+                    .LastOrDefault(e =>
+                        e.Elements(p.Key).Any() &&
                         (e.HasAttributes == false || e.Attributes().All(a => a.Name != "Condition"))
                     );
 
