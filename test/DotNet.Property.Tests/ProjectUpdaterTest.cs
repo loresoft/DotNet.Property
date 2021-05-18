@@ -47,6 +47,23 @@ namespace DotNet.Property.Tests
         }
 
         [Fact]
+        public void ParseArgumentsUrl()
+        {
+            var args = ProjectUpdater.ParseArguments(new[]
+            {
+                "Version=1.0.0.3",
+                "PackageProjectUrl=https://test.com",
+                "SourceProjectUrl=https://other.com"
+            }, 0);
+
+            args.Should().NotBeNull();
+            args.Count.Should().Be(3);
+            args["Version"].Should().Be("1.0.0.3");
+            args["PackageProjectUrl"].Should().Be("https://test.com");
+            args["SourceProjectUrl"].Should().Be("https://other.com");
+        }
+
+        [Fact]
         public void UpdateProject()
         {
             var properties = new Dictionary<string, string>

@@ -180,16 +180,38 @@ namespace DotNet.Property
             if (args == null)
                 throw new ArgumentNullException(nameof(args));
 
-            var arguments = new Dictionary<string, string>();
+            var arguments = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
             // skip first
             for (int i = startIndex; i < args.Length; i++)
             {
-                var parts = args[i].Split(':', '=');
-                var name = parts[0];
-                var value = parts.Length > 1 ? parts[1] : string.Empty;
+                int keyStartIndex = 0;
 
-                arguments[name] = value;
+                if (args[i].StartsWith("--"))
+                {
+                    keyStartIndex = 2;
+                }
+                else if (args[i].StartsWith("-"))
+                {
+                    keyStartIndex = 1;
+                }
+                else if (args[i].StartsWith("/"))
+                {
+                    keyStartIndex = 1;
+                }
+
+                int separator = args[i].IndexOfAny(new char[] { ':', '=' });
+
+                if (separator < 0)
+                {
+                    continue; // an invalid format
+
+                }
+
+                var key = args[i].Substring(keyStartIndex, separator - keyStartIndex);
+                var value = args[i].Substring(separator + 1);
+
+                arguments[key] = value;
             }
 
             return arguments;
