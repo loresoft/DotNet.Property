@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.8.3
+    - 16.9.1
+  - dependency-name: coverlet.msbuild
+    versions:
+    - 3.0.2
+  - dependency-name: Microsoft.Extensions.FileSystemGlobbing
+    versions:
+    - 5.0.0
+  - dependency-name: xunit.runner.visualstudio
+    versions:
+    - 2.4.3
