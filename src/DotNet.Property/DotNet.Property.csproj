@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <AssemblyName>dotnet-property</AssemblyName>
     <RootNamespace>DotNet.Property</RootNamespace>
     <PackageId>dotnet-property</PackageId>
