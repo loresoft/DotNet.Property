@@ -149,7 +149,7 @@ namespace DotNet.Property.Tests
                 { "Copyright", "Copyright 2018 LoreSoft" }
             };
 
-            var projectPath = Path.Combine(AppContext.BaseDirectory, "Samples", "SampleLibrary.xml");
+            var projectPath = Path.Combine(Environment.CurrentDirectory, "samples", "SampleLibrary.xml");
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
@@ -168,7 +168,7 @@ namespace DotNet.Property.Tests
                 { "Description", "Nested Version" }
             };
 
-            var projectPath = Path.Combine(AppContext.BaseDirectory, "Samples", "NestedGroup.xml");
+            var projectPath = Path.Combine(Environment.CurrentDirectory, "samples", "NestedGroup.xml");
 
             var updater = new ProjectUpdater();
             updater.Properties = properties;
