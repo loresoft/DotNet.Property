@@ -148,7 +148,7 @@ namespace DotNet.Property.Tests
                 { "Copyright", "Copyright 2018 LoreSoft" }
             };
 
-            var projectPath = @"samples\SampleLibrary.xml";
+            var projectPath = @".\samples\SampleLibrary.xml";
 
 
             var updater = new ProjectUpdater();
@@ -168,7 +168,7 @@ namespace DotNet.Property.Tests
                 { "Description", "Nested Version" }
             };
 
-            var projectPath = @"samples\NestedGroup.xml";
+            var projectPath = @".\samples\NestedGroup.xml";
 
 
             var updater = new ProjectUpdater();
