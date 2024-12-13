@@ -6,7 +6,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/loresoft/DotNet.Property/badge.svg)](https://coveralls.io/github/loresoft/DotNet.Property)
 
-[![NuGet Version](https://img.shields.io/nuget/v/DotNet.Property.svg?style=flat-square)](https://www.nuget.org/packages/DotNet.Property/)
+[![NuGet Version](https://img.shields.io/nuget/v/dotnet-property.svg?style=flat-square)](https://www.nuget.org/packages/dotnet-property/)
 
 ## Usage
 
